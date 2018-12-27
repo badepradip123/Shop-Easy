@@ -1,0 +1,64 @@
+<div class="login-page">
+    <div class="form">
+        <form (submit)="onRegisterSubmit()">
+        <div  *ngIf="!showLogin; else notshow" class="register-form">
+            <label>
+                Name:
+            </label>
+            <input class="form-control" type="text" [(ngModel)]="name" name="name"    placeholder="Full name" required>
+           
+            <label>
+                Username:
+            </label>
+            <input class="form-control" type="text" [(ngModel)]="username" name="username"    placeholder="Username" required>
+            <label>
+                Password:
+            </label>
+            <input class="form-control" type="password" [(ngModel)]="password" name="password"   placeholder="Password" required>
+            <label>
+                Email Id:
+            </label>
+            <input class="form-control" type="email" [(ngModel)]="email"   name="email"  placeholder="Email" required>
+            <label>
+                Mobile No. :
+            </label>
+            <input class="form-control" type="tel" [(ngModel)]="phone"   name="phone"  placeholder="+91" required>
+            <label>
+                Type
+            </label>
+            <div class="check-radio user-type">                    
+                <input type="radio" [(ngModel)]="type"  name="type" value="C">Buyser
+                <input type="radio" [(ngModel)]="type"  name="type" value="S">Seller
+            </div>  
+            
+            <div class="form-group">
+                <label>Address:</label>
+                <textarea class="form-control" [(ngModel)]="address" name="address" rows="5" id="comment"></textarea>
+            </div>
+            
+            <button>Create</button>           
+            <p class="message">
+                Already registered ?<a  (click)="showLogin=!showLogin">Login</a>
+            </p>
+        </div>
+        </form>
+        <ng-template #notshow>
+        <form (submit)="onLoginSubmit()"> 
+        <div  class="login-form">
+            <label>
+                Username:
+            </label>
+            <input class="form-control" type="text" [(ngModel)]="username" name="username" placeholder="User name" required>
+            <label>
+                Password:
+            </label>
+            <input class="form-control"  type="password" [(ngModel)]="password"   name="password"  placeholder="Password" required>            
+            <button input type="submit">Login</button>
+            <p class="message">
+               Not registered? <a (click)="showLogin=!showLogin">Register here</a>
+            </p>    
+        </div>
+        </form>
+        </ng-template>        
+    </div>
+</div>

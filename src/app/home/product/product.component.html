@@ -1,0 +1,30 @@
+<div class="product row">
+  <div class="product-img col-md-4">
+    <carousel>
+      <slide *ngFor="let ipath of product.imagespath">
+        <img src="{{path+'/'+ipath}}" alt="first slide" >       
+      </slide>     
+    </carousel>
+  </div>
+  <div class="product-details col-md-8">
+    <h3>{{ product.model }}</h3>
+    <p> by seller name </p>
+    <hr>
+    <h4>price <span>{{ product.price | currency:'INR'}}</span></h4>    
+    <h4> product details</h4>
+    <ul *ngIf="features">
+      <span *ngFor="let item of features">
+      <li>{{ item }}</li>
+      </span>
+     </ul>
+    <div class="buynow">
+      <button routerLink="/trans" routerLinkActive="active"><img src="assets/buy.png" ></button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+ 

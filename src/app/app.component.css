@@ -1,0 +1,28 @@
+.header {     
+    height: 70px;       
+}
+
+.head.container-fluid {
+    z-index: 2; 
+    position: fixed;
+    background-color: white;;
+    height: 65px;
+}
+
+.search-box input {
+    width: 100%;
+} 
+.child {    
+    width: 100%;
+    position: absolute;
+}
+
+.logo img {
+    width: 35%;
+    height: 60%;
+    cursor: pointer;
+}
+
+/deep/ .alert {
+    z-index: 5;    
+}

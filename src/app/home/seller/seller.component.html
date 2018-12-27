@@ -1,0 +1,35 @@
+<div *ngIf="!add; else newproduct">
+  <div *ngFor="let product of products" class="product">  
+    <app-product [product] = product ></app-product>
+  </div>
+  <div class="row">
+  <button (click)="showaddForm()" class="btn btn-primary ad-btn">Add New</button>
+  </div>
+</div>
+<ng-template #newproduct>
+<div class="seller-page">
+    <div class="form">
+        <form (submit)="onProductAdd()">
+          <label>
+            Product Name
+          </label>
+          <input class="form-control" type="text" [(ngModel)]="model"  name="model">
+          <label>
+            Price
+          </label>
+          <input class="form-control" type="text" [(ngModel)]="price"  name="prcie" >
+          <div class="form-group">
+                <label>Features:</label>
+                <textarea class="form-control" [(ngModel)]="features" name="features" rows="5" id="comment"></textarea>
+          </div>
+          <div class="file-upload">
+          <label>
+            File upload
+          </label>
+          <input  type="file" (change)="fileChangeEvent($event)" name="image" multiple>          
+          </div>
+          <button>Submit</button>        
+        </form>      
+    </div>
+</div>
+</ng-template>

@@ -1,0 +1,22 @@
+<div class="head container-fluid shadow p-3 mb-5">
+  <div class="header"> 
+    <div class="row">
+    <div class="col-md-3 logo">
+      <img src="/assets/shop-easy.png"  [routerLink]="['/']">
+    </div>
+    <div class="col-md-6 search-box ">
+      <input class="form-control" type="text" placeholder="search box"/>
+    </div>
+    <div  *ngIf="!authService.loggedIn()" class="col-md-3 login text-center">
+      <button   class="btn btn-primary"  [routerLink]="['/login']">Login</button>
+    </div> 
+    <div  *ngIf="authService.loggedIn()" class="col-md-3 login text-center">
+      <button (click)="onLogoutClick()" class="btn btn-primary">Logout</button>
+    </div>    
+  </div>
+  </div>
+</div>
+<div class="child">
+<div class="flash-msg"><ng-flash-message></ng-flash-message></div>
+<router-outlet></router-outlet>
+</div>

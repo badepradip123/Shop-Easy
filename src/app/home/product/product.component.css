@@ -1,0 +1,24 @@
+.product {
+    position: relative;
+    top: 100px;
+} 
+
+.product-img {
+    text-align: center;
+}
+.product-img img {
+    width: 50%;
+    height: 50%;
+    
+}
+.product-details {
+    text-transform: capitalize;
+}
+
+.buynow button{    
+    border: 0;
+    background-color: #f5f5f5;
+    cursor: pointer;    
+
+}
+
