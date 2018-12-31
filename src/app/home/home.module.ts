@@ -5,15 +5,17 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { ProductComponent } from './product/product.component';
 import { HomeComponent } from './home/home.component';
 import { SellerComponent } from './seller/seller.component';
-
+import { TransactionComponent } from "./transaction/transaction.component";
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
-  declarations: [ProductComponent, HomeComponent, SellerComponent],
-  exports: [ProductComponent, HomeComponent, SellerComponent]
+  declarations: [ProductComponent, HomeComponent, SellerComponent,TransactionComponent],
+  exports: [ProductComponent, HomeComponent, SellerComponent,TransactionComponent]
 })
 export class HomeModule { }

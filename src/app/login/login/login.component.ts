@@ -42,11 +42,8 @@ export class LoginComponent implements OnInit {
     // Required Fields
     if (!this.validateService.validateRegister(user)) {
       this.flashMessageService.showFlashMessage({
-        // Array of messages each will be displayed in new line
-        messages: ["Please filled all fileds"],        
-        // Time after which the flash disappears defaults to 2000ms
+        messages: ["Please filled all fileds"], 
         timeout: 3000  ,
-        // Type of flash message, it defaults to info and success, warning, danger types can also be used
         type: 'danger'
       });
       return false;      
@@ -55,38 +52,27 @@ export class LoginComponent implements OnInit {
     // Required email in proper format
     if (!this.validateService.validateEmail(user.email)) {
       this.flashMessageService.showFlashMessage({
-        // Array of messages each will be displayed in new line
-        messages: ["Please Enter validate email"],              
-        // Time after which the flash disappears defaults to 2000ms
+        messages: ["Please Enter validate email"],
         timeout: 3000,
-        // Type of flash message, it defaults to info and success, warning, danger types can also be used
         type: 'danger'
       });
       return false;      
     }
 
 
-    //console.log("on submit>>>>>>>>>>>>>>>>", user);
-    this.authService.registerUser(user).subscribe(data => {
-      //console.log("got callback>>>>>>>>>>>", data);
+    this.authService.registerUser(user).subscribe(data => {      
       if(data.success){
         this.showLogin = true;
         this.flashMessageService.showFlashMessage({
-          // Array of messages each will be displayed in new line
-          messages: ["You are registered and can login in"],              
-          // Time after which the flash disappears defaults to 2000ms
+          messages: ["You are registered and can login in"],
           timeout: 3000,
-          // Type of flash message, it defaults to info and success, warning, danger types can also be used
           type: 'success'
         });
         this.router.navigate(['/login']);
       }else{    
         this.flashMessageService.showFlashMessage({
-          // Array of messages each will be displayed in new line
-          messages: ["Something Went Wrong"],              
-          // Time after which the flash disappears defaults to 2000ms
+          messages: ["Something Went Wrong"],
           timeout: 3000,
-          // Type of flash message, it defaults to info and success, warning, danger types can also be used
           type: 'success'
         });
         this.router.navigate(['/register']);
@@ -103,13 +89,10 @@ export class LoginComponent implements OnInit {
     this.authService.authenticateUser(user).subscribe( data => {
       if (data.success) {
           this.authService.storeUserData(data.token,data.user);
-        
+
         this.flashMessageService.showFlashMessage({
-          // Array of messages each will be displayed in new line
-          messages: ["You are now loggedin"],              
-          // Time after which the flash disappears defaults to 2000ms
+          messages: ["You are now loggedin"], 
           timeout: 3000,
-          // Type of flash message, it defaults to info and success, warning, danger types can also be used
           type: 'success'
         });
         
@@ -123,12 +106,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         }
       } else {
-        this.flashMessageService.showFlashMessage({
-          // Array of messages each will be displayed in new line
-          messages: [data.msg],              
-          // Time after which the flash disappears defaults to 2000ms
-          timeout: 3000,
-          // Type of flash message, it defaults to info and success, warning, danger types can also be used
+        this.flashMessageService.showFlashMessage({         
+          messages: [data.msg],               
+          timeout: 3000,          
           type: 'danger'
         });
         this.router.navigate(['/login'])        

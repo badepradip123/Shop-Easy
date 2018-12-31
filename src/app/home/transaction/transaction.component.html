@@ -1,0 +1,56 @@
+<div *ngIf="product">
+<div class="invoice-form" #content>
+  <div class="container">
+    <div class="card">
+    <div class="card-header">
+      <h1 *ngIf="!status">Product Order Details</h1>
+      <h1 *ngIf="status">Invoice</h1>
+      <h4>Order Date: <span>{{today | date:'dd-MM-yyyy'}}</span></h4>     
+    </div>
+    <div class="card-body">
+      <div class="row mb-4">
+      <div class="col-sm-6">
+        <h6 class="mb-3">To:</h6>
+      <div>
+        <strong>{{user.name}}</strong>
+      </div>      
+      <div>{{user.address}}</div>
+      <div>Email: {{user.email}}</div>
+      <div>Phone: {{user.phone}}</div>
+      </div>
+      </div>
+      <div class="table-responsive">
+      <table class="table"> 
+        <tr> 
+          <th>Prduct</th> 
+          <th>Qty</th>
+          <th>Price</th>  
+        </tr> 
+        <tr> 
+          <td>{{product.model}}</td> 
+          <td>1</td> 
+          <td>{{product.price | currency:'INR'}}</td> 
+        </tr>
+
+        <tr>
+          <td></td> 
+          <th>Total</th> 
+          <th>{{product.price | currency:'INR'}}</th> 
+        </tr>
+               
+      </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<br>
+<div style="text-align: center">
+  <button *ngIf="status" class="btn btn-info mr-3" (click)="downloadPDF()" >Export to PDF</button>
+  <button *ngIf="!status" class="btn btn-success" (click)="onConfirm(product.id, user.id)">CONFIRM</button>
+  <button *ngIf="status" class="btn btn-info" [routerLink]="['/']">Continue Shopping>></button>
+</div>
+<br>
+</div>
+
+ 

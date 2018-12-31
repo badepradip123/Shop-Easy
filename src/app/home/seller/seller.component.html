@@ -18,9 +18,13 @@
             Price
           </label>
           <input class="form-control" type="text" [(ngModel)]="price"  name="prcie" >
+          <label>
+            Quantity
+          </label>
+          <input class="form-control" type="text" [(ngModel)]="count"  name="count">
           <div class="form-group">
                 <label>Features:</label>
-                <textarea class="form-control" [(ngModel)]="features" name="features" rows="5" id="comment"></textarea>
+                <textarea class="form-control" [(ngModel)]="features" placeholder="write features sepreted by (,)" name="features" rows="5" id="comment"></textarea>
           </div>
           <div class="file-upload">
           <label>

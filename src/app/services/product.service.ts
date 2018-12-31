@@ -25,22 +25,42 @@ export class ProductService {
     );
   }  
 
-  getProductById(id){
+  getProductBySellerId(id){
     let headers = new Headers();    
     this.loadToken();    
     headers.append('Authorization',this.authToken);
-    return this.http.get(environment.apiBaseUrl+'/product/'+id,{headers: headers})
+    return this.http.get(environment.apiBaseUrl+'/product/seller/'+id,{headers: headers})
     .pipe(
       map( res => res.json())
     );
   }  
 
+  getProductById(product_id){
+    let headers = new Headers();    
+    this.loadToken();    
+    headers.append('Authorization',this.authToken);
+    return this.http.get(environment.apiBaseUrl+'/product/'+product_id,{headers: headers})
+    .pipe(
+      map( res => res.json())
+    );
+  } 
+
   addProduct(product){
     let headers = new Headers();
     this.loadToken();
-    console.log('>>>>>>>>>>>>>>'+this.user.id+'<<<<<<<<<<<<<<<<<');
-    // headers.append('Content-Type','application/json');
+    //console.log('>>>>>>>>>>>>>>'+this.user.id+'<<<<<<<<<<<<<<<<<');
     return this.http.post(environment.apiBaseUrl+'/product/add', product, {headers: headers})
+    .pipe(
+      map( res => res.json())
+    );
+  }
+
+  confirmTransaction(product, user){
+    console.log('>>>>>>>>>>>>>>>>>>',product,user);
+    let headers = new Headers();
+    this.loadToken();    
+    headers.append('Authorization',this.authToken);
+    return this.http.post(environment.apiBaseUrl+'/product/transaction', {'user': user, 'product': product}, {headers: headers})
     .pipe(
       map( res => res.json())
     );

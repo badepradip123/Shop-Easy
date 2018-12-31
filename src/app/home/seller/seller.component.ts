@@ -15,7 +15,7 @@ export class SellerComponent implements OnInit {
     model: string;
     features: string;
     images: Array<File> = [];
-    count: number=0;
+    count: number;
     seller_id: number; 
     products: any; 
     add: boolean = false;
@@ -29,13 +29,15 @@ export class SellerComponent implements OnInit {
     this.route.params.subscribe( params =>
       this.seller_id = params['id']
     );
-    this.productService.getProductById(this.seller_id)
+    this.productService.getProductBySellerId(this.seller_id)
       .subscribe(products => 
         this.products = products);     
-}
+  }
+
   fileChangeEvent(fileInput: any) {
     this.images = fileInput.target.files;
   }
+  
   onProductAdd(){
     this.productService.loadToken();
     
@@ -51,18 +53,16 @@ export class SellerComponent implements OnInit {
     }    
     
     this.productService.addProduct(formData).subscribe(data => {
-      if(data.success){       
+      if(data.success){  
+
         this.flashMessageService.showFlashMessage({
-          // Array of messages each will be displayed in new line
-          messages: ["You added product"],              
-          // Time after which the flash disappears defaults to 2000ms
-          timeout: 3000,
-          // Type of flash message, it defaults to info and success, warning, danger types can also be used
-          type: 'success'
+        messages: ["You added product"], timeout: 3000,type: 'success'
         });
+
         this.add = false;
-        this.productService.getProductById(this.seller_id)
+        this.productService.getProductBySellerId(this.seller_id)
         .subscribe(products => this.products = products);
+        //console.log(data);          
       }else{    
         this.flashMessageService.showFlashMessage({
           // Array of messages each will be displayed in new line

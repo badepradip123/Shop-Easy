@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
   title = 'shop-easy-UI';
+  user:any;
   
   constructor(private flashMessageService: NgFlashMessageService,
               private authService: AuthService,
@@ -30,5 +31,26 @@ export class AppComponent {
     
     return false;
   }
+
+  goHome(){
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if(this.user){
+
+      if(this.user.type.trim() == 'S')
+          {
+            //console.log('seller navigation  '+data.user.type);          
+            this.router.navigate(['/seller', this.user.id])
+          }
+          else{ 
+            //console.log('home navigation  '+data.user.type);        
+            this.router.navigate(['/']);
+          }
+     }
+     else{
+      //  console.log('hellloer');
+      this.router.navigate(['/']);
+     }
+   } 
+  
 
 }

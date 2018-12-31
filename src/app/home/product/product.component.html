@@ -1,4 +1,4 @@
-<div class="product row">
+<div  class="product row" >
   <div class="product-img col-md-4">
     <carousel>
       <slide *ngFor="let ipath of product.imagespath">
@@ -8,7 +8,7 @@
   </div>
   <div class="product-details col-md-8">
     <h3>{{ product.model }}</h3>
-    <p> by seller name </p>
+    <!-- <p> by seller name </p> -->
     <hr>
     <h4>price <span>{{ product.price | currency:'INR'}}</span></h4>    
     <h4> product details</h4>
@@ -17,11 +17,24 @@
       <li>{{ item }}</li>
       </span>
      </ul>
-    <div class="buynow">
-      <button routerLink="/trans" routerLinkActive="active"><img src="assets/buy.png" ></button>
+     <div *ngIf="!user">
+        <div *ngIf="product.count <= 0"> <strong>Out Of Stock</strong></div>
+        <div *ngIf="product.count > 0" class="buynow">
+           <button (click)="buyNow()"  [routerLink]="['/trans', product.id]"><img src="assets/buy.png" ></button>
+        </div>
+     </div>
+     <div *ngIf="user">
+      <div *ngIf="user.type.trim() == 'C' && product.count > 0" class="buynow">
+        <button (click)="buyNow()"  [routerLink]="['/trans', product.id]"><img src="assets/buy.png" ></button>
+      </div>
+      <div *ngIf="user.type.trim() == 'S'"><strong>Quantity :  </strong>{{product.count}}</div>
+      <div *ngIf="product.count <= 0"> <strong>Out Of Stock</strong></div>
     </div>
   </div>
 </div>
+<!-- <div *ngIf="buy" >
+<app-transaction [product] = product ></app-transaction>
+</div> -->
 
 
 

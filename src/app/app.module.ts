@@ -5,9 +5,10 @@ import { NgFlashMessagesModule } from 'ng-flash-messages';
 import { FormsModule } from '@angular/forms';
 import { HomeModule } from "./home/home.module";
 import { AppComponent } from './app.component';
+
 import { HttpModule } from '@angular/http';
 import { LoginModule } from "./login/login.module";
-import { TransactionModule } from "./transaction/transaction.module";
+
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './/app-routing.module';
 
@@ -21,11 +22,10 @@ import { AppRoutingModule } from './/app-routing.module';
     CarouselModule.forRoot(),
     NgFlashMessagesModule.forRoot(),
     HttpModule, 
-    AppRoutingModule,   
+    AppRoutingModule,
+    
     HomeModule,
     LoginModule,
-    TransactionModule,
-    AppRoutingModule,
     JwtModule.forRoot({
       config: {
         // ...
@@ -36,6 +36,7 @@ import { AppRoutingModule } from './/app-routing.module';
     }),
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

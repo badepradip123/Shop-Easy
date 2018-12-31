@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductService } from "../../services/product.service";
 import { Product } from "../home/product";
 import { environment } from "../../../environments/environment";
 
@@ -13,13 +12,21 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
   features:any;
   path = environment.apiBaseUrl;
+  buy: boolean = false;
+  user: any = {};
   
-  constructor(private productService: ProductService) { }
+  constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     if(this.product.features){
       this.features = this.product.features.split(",")
     }  
+  }
+
+  buyNow(){
+    this.buy = true;
+    //console.log('buy value',this.buy);
   }
   
 
