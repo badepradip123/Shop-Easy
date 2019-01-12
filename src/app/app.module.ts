@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 
 import { HttpModule } from '@angular/http';
 import { LoginModule } from "./login/login.module";
-
+//import { PaginationModule } from 'ngx-bootstrap';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './/app-routing.module';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { AppRoutingModule } from './/app-routing.module';
     NgFlashMessagesModule.forRoot(),
     HttpModule, 
     AppRoutingModule,
-    
+    NgxPaginationModule,
+    //PaginationModule.forRoot(),
     HomeModule,
     LoginModule,
     JwtModule.forRoot({
@@ -36,7 +40,7 @@ import { AppRoutingModule } from './/app-routing.module';
     }),
   ],
   providers: [],
-  exports: [],
+  exports: [NgxPaginationModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

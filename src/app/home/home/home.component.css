@@ -1,3 +1,11 @@
 .product {
     margin-top: 10px;
 }
+.pagi-nation {
+    position: relative;
+    /* left: 44px; */
+    /* bottom: -136px; */
+    top: 150px;
+    text-align: center;
+
+}

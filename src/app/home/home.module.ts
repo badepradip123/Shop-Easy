@@ -7,11 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { SellerComponent } from './seller/seller.component';
 import { TransactionComponent } from "./transaction/transaction.component";
 import { AppRoutingModule } from '../app-routing.module';
+import {NgxPaginationModule} from 'ngx-pagination';
+//import { PaginationModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     CarouselModule,
+    //PaginationModule,
+    NgxPaginationModule,
     FormsModule,
     AppRoutingModule
   ],
