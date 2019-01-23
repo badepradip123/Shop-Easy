@@ -1,5 +1,6 @@
-<div *ngFor="let product of products | paginate: { itemsPerPage: 2, currentPage: p }" class="product">
+<div *ngFor="let product of products | paginate: { itemsPerPage: 2, currentPage: p, totalItems: pageCount}" class="product">
 <app-product [product] = product ></app-product>
 </div>
-<pagination-controls class="pagi-nation" (pageChange)="p = $event"></pagination-controls>
+<pagination-controls class="pagi-nation" (pageChange)="pageChange($event)"></pagination-controls>
+
 <!-- <pagination [totalItems]="30"></pagination> -->

@@ -14,12 +14,12 @@ export class ProductService {
   constructor(private http: Http,
     public helper: JwtHelperService) { }
 
-  getProduct(){
+  getProduct(page){
     let headers = new Headers();
     // console.log('--------------'+this.authToken+'--------');
     this.loadToken();    
     headers.append('Authorization',this.authToken);
-    return this.http.get(environment.apiBaseUrl+'/product',{headers: headers})
+    return this.http.get(environment.apiBaseUrl+'/product?page='+page,{headers: headers})
     .pipe(
       map( res => res.json())
     );
